@@ -18,4 +18,12 @@ export class NavComponent {
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
+  username = 'richard rick';
+
+  getInitials(nameString) {
+    const fullName = nameString.split(' ');
+    const initials = fullName.shift().charAt(0) + fullName.pop().charAt(0);
+    return initials.toUpperCase();
+  }
+
 }

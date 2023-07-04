@@ -24,7 +24,11 @@
         <mat-icon>notifications</mat-icon>
       </button>
       <button type="button" aria-label="Toggle sidenav" mat-icon-button>
-        <mat-icon>circle</mat-icon>
+        <div class="rows">
+          <div class="circles">
+            {{ getInitials(username) }}
+          </div>
+          </div>
       </button>
     </mat-toolbar>
     <!-- Add Content Here -->

@@ -31,3 +31,25 @@
 .spacer {
   flex: 1;
 }
+/****** Avatar **************/
+.rows {
+  display: flex;
+  align-items: center;
+}
+
+.circles {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background: #47a1f6;
+  border: 2px solid #47a1f6;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+}
+.rows .circles:not(:first-child) {
+margin-left: -18px;
+}
+.rows .circles:nth-child(n+5){
+   display: none;
+}
