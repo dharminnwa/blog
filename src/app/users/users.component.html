@@ -2,22 +2,16 @@
     <div class="row header my-2 mx-2">
         <div class="card">
             <div class="card-body">
-                <h3>Users</h3>
+                <mat-icon aria-label="Side nav toggle icon">people</mat-icon><span>Users</span>
+                <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="isGridView = false">
+                    <mat-icon aria-label="Side nav toggle icon">list</mat-icon>
+                </button>
+                <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="isGridView = true">
+                    <mat-icon aria-label="Side nav toggle icon">view_module</mat-icon>
+                </button>
             </div>
         </div>
     </div>
-    <div class="row my-3 mx-3">
-        <ng-container *ngFor="let user of users">
-            <div class="col-2 mt-3">
-                <div class="card align-items-center">
-                    <img class="card-img-top mt-2 rounded-circle w-50" src="https://picsum.photos/id/1/200/300"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h1 class="card-title" style="color: blue;">{{ user.name }}</h1>
-                        <p class="card-text">{{ user.email }}</p>
-                    </div>
-                </div>
-            </div>
-        </ng-container>
-    </div>
+    <app-users-grid-view *ngIf="isGridView"></app-users-grid-view>
+    <app-users-list-view *ngIf="!isGridView"></app-users-list-view>
 </div>
