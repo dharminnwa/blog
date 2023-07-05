@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { UsersComponent } from './users.component';
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersGridViewComponent } from './users-grid-view/users-grid-view.component';
 import { UsersListViewComponent } from './users-list-view/users-list-view.component';
@@ -8,6 +9,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
+    UsersComponent,
+  
     UsersGridViewComponent,
     UsersListViewComponent
   ],

@@ -18,4 +18,8 @@ export class SharedService {
   getUsersList(): Observable<any> {
     return this.sharedHttpService.getUsersApi();
   }
+
+  getHomeHeaderData(): Observable<any[]> {
+    return this.sharedHttpService.getHomeHeaderDataApi();
+  }
 }
