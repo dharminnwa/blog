@@ -6,11 +6,11 @@ import { UsersGridViewComponent } from './users-grid-view/users-grid-view.compon
 import { UsersListViewComponent } from './users-list-view/users-list-view.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     UsersComponent,
-  
     UsersGridViewComponent,
     UsersListViewComponent
   ],
@@ -18,7 +18,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     CommonModule,
     UsersRoutingModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatIconModule
   ],
   exports:[
     UsersGridViewComponent,

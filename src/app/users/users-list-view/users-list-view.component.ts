@@ -36,7 +36,6 @@ export class UsersListViewComponent implements OnInit {
   getUsersList() {
     this._sharedService.getUsersList().subscribe({
       next:(users) => {
-        debugger;
         this.dataSource = users;
         this.users = users;
       }
