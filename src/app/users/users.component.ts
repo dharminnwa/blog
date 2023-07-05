@@ -7,22 +7,11 @@ import { SharedService } from '../shared/service/shared.service';
   styleUrls: ['./users.component.sass']
 })
 export class UsersComponent implements OnInit {
+  isGridView: boolean = false;
 
-  users: any[] = [];
-  constructor(
-    private sharedService: SharedService
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.getUsersList();
-  }
 
-  getUsersList() {
-    this.sharedService.getUsersList().subscribe({
-      next:(users) => {
-        this.users = users;
-      }
-    })
   }
-
 }
