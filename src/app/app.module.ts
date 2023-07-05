@@ -11,18 +11,13 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { HomeComponent } from './home/home.component';
-import { UsersComponent } from './users/users.component';
-import { BlogsComponent } from './blogs/blogs.component';
 import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    HomeComponent,
-    UsersComponent,
-    BlogsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatListModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
