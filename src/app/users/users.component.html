@@ -1,1 +1,23 @@
-<p>users works!</p>
+<div class="container-fluid">
+    <div class="row header my-2 mx-2">
+        <div class="card">
+            <div class="card-body">
+                <h3>Users</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row my-3 mx-3">
+        <ng-container *ngFor="let user of users">
+            <div class="col-2 mt-3">
+                <div class="card align-items-center">
+                    <img class="card-img-top mt-2 rounded-circle w-50" src="https://picsum.photos/id/1/200/300"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <h1 class="card-title" style="color: blue;">{{ user.name }}</h1>
+                        <p class="card-text">{{ user.email }}</p>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>

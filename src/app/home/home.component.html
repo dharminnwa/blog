@@ -1,1 +1,58 @@
-<p>home works!</p>
+<div class="container-fluid">
+    <div class="row header my-2 mx-2">
+        <div class="card">
+            <div class="card-body">
+                <h3>Home</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row my-2 mx-2">
+        <div class="col-md-3 p-0">
+            <div class="card">
+                <div class="card-body">
+                    <h1>345</h1>
+                    <p>Total-Orders</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 p-0">
+            <div class="card">
+                <div class="card-body">
+                    <h1>345</h1>
+                    <p>Total-Orders</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 p-0">
+            <div class="card">
+                <div class="card-body">
+                    <h1>345</h1>
+                    <p>Total-Orders</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 p-0">
+            <div class="card">
+                <div class="card-body">
+                    <h1>345</h1>
+                    <p>Total-Orders</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card my-2 mx-2">
+        <div class="row mx-3 my-3">Recent Posts</div>
+        <hr>
+        <div class="d-flex flex-grow-1 flex-wrap">
+            <ng-container *ngFor="let post of blogPost">
+                <div class="col-md-3 my-2">
+                    <div class="d-block">
+                        <img class="" src="https://picsum.photos/id/1/200/300">
+                        <h4 class="card-title" style="color: blue;">{{ post.title }}</h4>
+                        <span>{{post.body}}</span>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>
