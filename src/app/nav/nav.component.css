@@ -29,9 +29,11 @@
   color: #668094;
   font-weight: 600;
 }
+
 .spacer {
   flex: 1;
 }
+
 /****** Avatar **************/
 .rows {
   display: flex;
@@ -48,9 +50,20 @@
   text-align: center;
   line-height: 40px;
 }
+
 .rows .circles:not(:first-child) {
-margin-left: -18px;
+  margin-left: -18px;
 }
-.rows .circles:nth-child(n+5){
-   display: none;
+
+.rows .circles:nth-child(n+5) {
+  display: none;
+}
+
+.toolbar-menu {
+  font-family: Proxima Nova;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #253244;
 }
