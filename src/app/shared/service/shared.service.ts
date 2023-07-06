@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { SharedHttpService } from './shared-http.service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
 
+  public isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public searchText: BehaviorSubject<string> = new BehaviorSubject("");
 
   constructor(
@@ -27,5 +28,13 @@ export class SharedService {
 
   getHomeHeaderData(): Observable<any[]> {
     return this.sharedHttpService.getHomeHeaderDataApi();
+  }
+
+  userLoggedIn(): void {
+    if(localStorage.getItem('token')!== null){
+      this.isUserLoggedIn.next(true);
+    } else {
+      this.isUserLoggedIn.next(false);
+    }
   }
 }

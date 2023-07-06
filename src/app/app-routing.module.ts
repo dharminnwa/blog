@@ -1,23 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 import { environment } from 'src/environments/environment';
-import { UsersComponent } from './users/users.component';
-import { BlogsComponent } from './blogs/blogs.component';
+import { AuthGuard } from './shared/auth.guard';
+import { RouteGuard } from './shared/route.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: environment.landingpage, pathMatch: 'full' },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule)
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'users',
-    loadChildren: () => import('./users/users.module').then((m) => m.UsersModule)
+    loadChildren: () => import('./users/users.module').then((m) => m.UsersModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'blogs',
-    loadChildren: () => import('./blogs/blogs.module').then((m) => m.BlogsModule)
+    loadChildren: () => import('./blogs/blogs.module').then((m) => m.BlogsModule),
+    canActivate: [AuthGuard]
+  },
+  { path: 'auth/login', 
+  loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+  canActivate: [RouteGuard]
   },
 ];
 
