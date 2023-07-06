@@ -67,3 +67,8 @@
   text-align: left;
   color: #253244;
 }
+
+.navbar {
+  padding-left: 0 !important;
+  z-index: 1041;
+}

@@ -11,7 +11,6 @@ import { SharedService } from 'src/app/shared/service/shared.service';
 })
 export class UsersListViewComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  // @ViewChild(MatSort) sort: MatSort;
   @ViewChild('userSort', { static: false }) sort: MatSort;
 
   dataSource: any;
@@ -52,13 +51,6 @@ export class UsersListViewComponent implements OnInit {
     const initials = fullName.shift().charAt(0) + fullName.pop().charAt(0);
     return initials.toUpperCase();
   }
-
-  // applyFilter(event: Event) {
-  //   const filterValue = (event.target as HTMLInputElement).value;
-  //   this.dataSource.filter = filterValue.trim().toLowerCase();
-  //   this.dataSource.paginator = this.paginator;
-  //   this.dataSource.sort = this.sort;
-  // }
 
   applyFilter(value: string) {
 
