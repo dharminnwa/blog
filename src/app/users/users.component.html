@@ -23,13 +23,15 @@
                                 <mat-icon aria-label="Side nav toggle icon">view_module</mat-icon>s
                             </mat-button-toggle>
                         </mat-button-toggle-group> -->
-                        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="toggle-group cus-toggle-wrap"
-                            [value]="isGridView">
+                        <mat-button-toggle-group name="fontStyle" aria-label="Font Style"
+                            class="toggle-group cus-toggle-wrap" [value]="isGridView">
                             <mat-button-toggle [value]="false" (change)="isGridView = false" selected>
-                                <mat-icon aria-label="Side nav toggle icon" [color]="!isGridView ? 'icon-color' : ''">list</mat-icon>
+                                <mat-icon aria-label="Side nav toggle icon"
+                                    [color]="!isGridView ? 'icon-color' : ''">list</mat-icon>
                             </mat-button-toggle>
                             <mat-button-toggle [value]="true" (change)="isGridView = true">
-                                <mat-icon aria-label="Side nav toggle icon" [color]="isGridView ? 'icon-color' : ''">view_module</mat-icon>
+                                <mat-icon aria-label="Side nav toggle icon"
+                                    [color]="isGridView ? 'icon-color' : ''">view_module</mat-icon>
                             </mat-button-toggle>
                         </mat-button-toggle-group>
                     </div>
@@ -49,7 +51,7 @@
             <div class="container-fluid px-0">
                 <div class="row pl-4 g-0">
                     <div class="col-6 d-flex align-items-center">
-                        <p class="header-text px-3">Total Users : 10</p>
+                        <p class="header-text px-3">Total Users : {{userCount}}</p>
                     </div>
                     <div class="col-6 text-end">
                         <div
@@ -59,7 +61,9 @@
                             <div class="search-icon-wrap" style="position: absolute; top:3px; left:4px;">
                                 <mat-icon matPrefix>search</mat-icon>
                             </div>
-                            <input matInput placeholder="Search Entry" style="padding: 3px 5px 3px 31px;" #input (keyup)="applyFilter($event)">
+                            <input matInput placeholder="Search Entry" style="padding: 3px 5px 3px 31px;border-radius: 1.333px;
+                            border: 1.333px solid #ACC0D0;
+                            background: #FFF;" #input (keyup)="applyFilter($event)">
                             <!-- </mat-form-field> -->
                         </div>
                     </div>
@@ -68,8 +72,8 @@
             </div>
         </div>
     </div>
-    <app-users-grid-view *ngIf="isGridView"></app-users-grid-view>
-    <app-users-list-view *ngIf="!isGridView"></app-users-list-view>
+    <app-users-grid-view *ngIf="isGridView" (userCountEmit)="getUserCount($event)"></app-users-grid-view>
+    <app-users-list-view *ngIf="!isGridView" (userCountEmit)="getUserCount($event)"></app-users-list-view>
 </div>
 
 

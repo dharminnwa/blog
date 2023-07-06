@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,6 +13,7 @@ export class UsersListViewComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   // @ViewChild(MatSort) sort: MatSort;
   @ViewChild('userSort', { static: false }) sort: MatSort;
+  @Output() userCountEmit = new EventEmitter();
 
   dataSource: any;
   userDataList: any[] = [];
@@ -42,7 +43,9 @@ export class UsersListViewComponent implements OnInit {
       next: (users) => {
         this.userDataList = users;
         this.dataSource = new MatTableDataSource(users);
+        this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
+        this.userCountEmit.emit(users.length);
       }
     })
   }
