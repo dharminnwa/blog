@@ -8,9 +8,15 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class SharedService {
 
   public isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public searchText: BehaviorSubject<string> = new BehaviorSubject("");
+
   constructor(
     private sharedHttpService: SharedHttpService
   ) { }
+
+  public setSearchTextValue(searchValue: string) {
+    this.searchText.next(searchValue);
+  }
 
   getBlogPosts(): Observable<any> {
     return this.sharedHttpService.getBlogPostApi();

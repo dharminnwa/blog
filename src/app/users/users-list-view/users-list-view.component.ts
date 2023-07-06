@@ -1,20 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { SharedService } from 'src/app/shared/service/shared.service';
-
-// export interface PeriodicElement {
-//   name: string;
-//   position: number;
-//   joiningDate: Date;
-// }
-
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {position: 1, name: 'Hydrogen', joiningDate: new Date() },
-//   {position: 2, name: 'Helium', joiningDate: new Date()},
-//   {position: 3, name: 'Lithium', joiningDate: new Date()},
-//   {position: 4, name: 'Beryllium', joiningDate: new Date()},
-//   {position: 5, name: 'Boron', joiningDate: new Date()}
-// ];
-
 
 @Component({
   selector: 'app-users-list-view',
@@ -22,12 +10,29 @@ import { SharedService } from 'src/app/shared/service/shared.service';
   styleUrls: ['./users-list-view.component.sass']
 })
 export class UsersListViewComponent implements OnInit {
-  users: any[] = [];
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  // @ViewChild(MatSort) sort: MatSort;
+  @ViewChild('userSort', { static: false }) sort: MatSort;
+  @Output() userCountEmit = new EventEmitter();
 
-  displayedColumns: string[] = ['profilePicture','name', 'position', 'joiningDate'];
-  public dataSource : any;
+  dataSource: any;
+  userDataList: any[] = [];
 
-  constructor(private _sharedService: SharedService) { }
+  displayedColumns: string[] = ['avatar', 'name', 'email', 'phone'];
+
+  constructor(private _sharedService: SharedService) {
+    this._sharedService.searchText.subscribe((value) => {
+      if (value) {
+        this.applyFilter(value)
+      }
+      else {
+        if (this.userDataList && this.userDataList.length > 0) {
+          this.dataSource = new MatTableDataSource(this.userDataList);
+          this.dataSource.paginator = this.paginator;
+        }
+      }
+    })
+  }
 
   ngOnInit(): void {
     this.getUsersList();
@@ -35,9 +40,12 @@ export class UsersListViewComponent implements OnInit {
 
   getUsersList() {
     this._sharedService.getUsersList().subscribe({
-      next:(users) => {
-        this.dataSource = users;
-        this.users = users;
+      next: (users) => {
+        this.userDataList = users;
+        this.dataSource = new MatTableDataSource(users);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.userCountEmit.emit(users.length);
       }
     })
   }
@@ -46,5 +54,19 @@ export class UsersListViewComponent implements OnInit {
     const fullName = nameString.split(' ');
     const initials = fullName.shift().charAt(0) + fullName.pop().charAt(0);
     return initials.toUpperCase();
+  }
+
+  // applyFilter(event: Event) {
+  //   const filterValue = (event.target as HTMLInputElement).value;
+  //   this.dataSource.filter = filterValue.trim().toLowerCase();
+  //   this.dataSource.paginator = this.paginator;
+  //   this.dataSource.sort = this.sort;
+  // }
+
+  applyFilter(value: string) {
+
+    this.dataSource.filter = value.trim().toLowerCase();
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 }

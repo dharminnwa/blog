@@ -6,7 +6,11 @@ import { UsersGridViewComponent } from './users-grid-view/users-grid-view.compon
 import { UsersListViewComponent } from './users-list-view/users-list-view.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { FormsModule } from '@angular/forms';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -19,9 +23,13 @@ import { MatIconModule } from '@angular/material/icon';
     UsersRoutingModule,
     MatTableModule,
     MatPaginatorModule,
-    MatIconModule
+    MatFormFieldModule,
+    MatIconModule,
+    MatButtonToggleModule,
+    FormsModule,
+    MatSortModule,
   ],
-  exports:[
+  exports: [
     UsersGridViewComponent,
     UsersListViewComponent,
   ]

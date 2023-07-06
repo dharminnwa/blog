@@ -8,10 +8,22 @@ import { SharedService } from '../shared/service/shared.service';
 })
 export class UsersComponent implements OnInit {
   isGridView: boolean = false;
+  searchText: string = "";
+  userCount: number = 0;
 
-  constructor() { }
+  constructor(public _sharedService: SharedService) { }
 
   ngOnInit(): void {
 
+  }
+
+  applyFilter(event: Event) {
+    this.searchText = (event.target as HTMLInputElement).value;
+    this._sharedService.setSearchTextValue(this.searchText);
+  }
+
+  getUserCount(value) {
+    debugger
+    this.userCount = value;
   }
 }
