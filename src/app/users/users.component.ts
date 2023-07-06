@@ -4,7 +4,7 @@ import { SharedService } from '../shared/service/shared.service';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.sass']
+  styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
   isGridView: boolean = false;

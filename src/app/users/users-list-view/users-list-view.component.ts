@@ -4,20 +4,6 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { SharedService } from 'src/app/shared/service/shared.service';
 
-/* Static data */ 
-export interface PeriodicElement {
-  name: string;
-  position: string;
-  email: string;
-  joiningDate: Date;
-  avatar:string;
-}
-const ELEMENT_DATA: PeriodicElement[] = [
-  { name: 'George Bluth', position: "Junior developer", email:"emma.wong@reqres.in", joiningDate : new Date("2022-05-03"),   avatar:"https://reqres.in/img/faces/1-image.jpg" },
-  { name: 'Janet Weaver', position: "Senior developer", email:"janet.weaver@reqres.in",  joiningDate : new Date("2022-05-03"), avatar:"https://reqres.in/img/faces/2-image.jpg" },
-  { name: 'Emma Wong', position: "Project Manger", email:"emma.wong@reqres.in", joiningDate: new Date("2022-05-03"), avatar:"https://reqres.in/img/faces/3-image.jpg" }  
-];
-
 @Component({
   selector: 'app-users-list-view',
   templateUrl: './users-list-view.component.html',
@@ -26,10 +12,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class UsersListViewComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-  users: any[] = [];
+  dataSource: any;
 
-  displayedColumns: string[] = ['avatar','name', 'position', 'joiningDate'];
+  displayedColumns: string[] = ['avatar','name', 'email', 'phone'];
 
   constructor(private _sharedService: SharedService) { }
 
@@ -40,12 +25,8 @@ export class UsersListViewComponent implements OnInit {
   getUsersList() {
     this._sharedService.getUsersList().subscribe({
       next:(users) => {
-
-       debugger;
-        //this.dataSource = data as Object;
-        //this.dataSource.totalRecords = this.dataSource.length;
+        this.dataSource = new MatTableDataSource(users);
         this.dataSource.paginator = this.paginator;
-        this.users = users;
       }
     })
   }
@@ -54,5 +35,12 @@ export class UsersListViewComponent implements OnInit {
     const fullName = nameString.split(' ');
     const initials = fullName.shift().charAt(0) + fullName.pop().charAt(0);
     return initials.toUpperCase();
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 }

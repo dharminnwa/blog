@@ -1,5 +1,11 @@
+<div class="container-fluid">
+  <div class="header my-2 mx-2">  
+    <mat-label>Search: </mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
+    </div>
+</div>
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-100" matSort>
-  <!-- Name Column -->
   <ng-container matColumnDef="avatar">
     <th mat-header-cell *matHeaderCellDef style="width: 100px;" mat-sort-header> </th>
     <td mat-cell *matCellDef="let element">
@@ -12,31 +18,29 @@
                     color: white;
                     text-align: center;
                     line-height: 40px;">
-          {{ getInitials(element.firstName  + " " + element.lastName) }}
+          {{ getInitials(element.name) }}
         </div>
       </div>
     </td>
   </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
 
-    <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Position </th>
-        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-      </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="joiningDate">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Joining Date </th>
-      <td mat-cell *matCellDef="let element"> {{ element.joiningDate | date }} </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="phone">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
+    <td mat-cell *matCellDef="let element"> {{ element.phone}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
 <mat-paginator [pageSizeOptions]="[5, 10, 15, 20]" showFirstLastButtons aria-label="Select page of periodic elements">

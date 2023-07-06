@@ -1,12 +1,17 @@
 <div class="row my-3 mx-3">
     <ng-container *ngFor="let user of users">
-        <div class="col-2 mt-3">
-            <div class="card align-items-center">
-                <img class="card-img-top mt-2 rounded-circle w-50" src="https://picsum.photos/id/1/200/300"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h1 class="card-title" style="color: blue;">{{ user.name }}</h1>
-                    <p class="card-text">{{ user.email }}</p>
+        <div class="col-2 mt-3" style="padding-top: 50px;">
+            <div class="card h-100 align-items-center border-0" style="border-radius: 8px; ">
+                <div class="position-relative" style="margin-top: -50px;">
+                    <img class="card-img-top mt-2" style="border-radius: 50%; border:10px solid white ; width: 110px;
+                    height: 109px; object-fit: cover;" src="https://picsum.photos/id/1/200/300" alt="Card image cap">
+                    <div class="ab-send-btn-wrap" style="position: absolute; bottom:0px;right: 0px;">
+                        <a href=""> <img src="../../../assets/send.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="card-body text-center pt-4">
+                    <h1 class="card-title" style="color: #47A1F6; margin:0%; font-weight: 500;">{{ user.name }}</h1>
+                    <p class="card-text" style="color: #506E85;">{{ user.email }}</p>
                 </div>
             </div>
         </div>
