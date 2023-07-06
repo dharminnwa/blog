@@ -11,12 +11,27 @@ import { SharedService } from 'src/app/shared/service/shared.service';
 })
 export class UsersListViewComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  // @ViewChild(MatSort) sort: MatSort;
+  @ViewChild('userSort', { static: false }) sort: MatSort;
+
   dataSource: any;
+  userDataList: any[] = [];
 
-  displayedColumns: string[] = ['avatar','name', 'email', 'phone'];
+  displayedColumns: string[] = ['avatar', 'name', 'email', 'phone'];
 
-  constructor(private _sharedService: SharedService) { }
+  constructor(private _sharedService: SharedService) {
+    this._sharedService.searchText.subscribe((value) => {
+      if (value) {
+        this.applyFilter(value)
+      }
+      else {
+        if (this.userDataList && this.userDataList.length > 0) {
+          this.dataSource = new MatTableDataSource(this.userDataList);
+          this.dataSource.paginator = this.paginator;
+        }
+      }
+    })
+  }
 
   ngOnInit(): void {
     this.getUsersList();
@@ -24,7 +39,8 @@ export class UsersListViewComponent implements OnInit {
 
   getUsersList() {
     this._sharedService.getUsersList().subscribe({
-      next:(users) => {
+      next: (users) => {
+        this.userDataList = users;
         this.dataSource = new MatTableDataSource(users);
         this.dataSource.paginator = this.paginator;
       }
@@ -37,9 +53,16 @@ export class UsersListViewComponent implements OnInit {
     return initials.toUpperCase();
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  // applyFilter(event: Event) {
+  //   const filterValue = (event.target as HTMLInputElement).value;
+  //   this.dataSource.filter = filterValue.trim().toLowerCase();
+  //   this.dataSource.paginator = this.paginator;
+  //   this.dataSource.sort = this.sort;
+  // }
+
+  applyFilter(value: string) {
+
+    this.dataSource.filter = value.trim().toLowerCase();
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }

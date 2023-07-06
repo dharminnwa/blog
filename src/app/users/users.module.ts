@@ -8,6 +8,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { FormsModule } from '@angular/forms';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -21,9 +24,12 @@ import { MatIconModule } from '@angular/material/icon';
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonToggleModule,
+    FormsModule,
+    MatSortModule,
   ],
-  exports:[
+  exports: [
     UsersGridViewComponent,
     UsersListViewComponent,
   ]

@@ -7,9 +7,21 @@ import { SharedService } from 'src/app/shared/service/shared.service';
   styleUrls: ['./users-grid-view.component.sass']
 })
 export class UsersGridViewComponent implements OnInit {
-  users: any[] = [];
+  public users: any = [];
+  public usersClone: any = [];
 
-  constructor(private _sharedService: SharedService) { }
+  constructor(private _sharedService: SharedService) {
+    this._sharedService.searchText.subscribe((value) => {
+      if (value) {
+        this.users = this.searchUserNameList(value, this.usersClone)
+      }
+      else {
+        if (this.usersClone && this.usersClone.length > 0) {
+          this.users = this.usersClone
+        }
+      }
+    })
+  }
 
   ngOnInit(): void {
     this.getUsersList();
@@ -17,10 +29,33 @@ export class UsersGridViewComponent implements OnInit {
 
   getUsersList() {
     this._sharedService.getUsersList().subscribe({
-      next:(users) => {
+      next: (users) => {
         this.users = users;
+        this.usersClone = users;
       }
     })
+  }
+
+  public selectUserNameList(query: string, listClone: any): any[] {
+    const result: any[] = [];
+    for (const b of listClone) {
+      if (b.name.toLowerCase().includes(query)) {
+        result.push(b)
+      }
+    }
+    return result
+  }
+
+  public searchUserNameList(query, listClone): any {
+    var list;
+    const d = query.toLowerCase();
+    const result = this.selectUserNameList(d, listClone);
+    if (query == '') {
+      list = listClone;
+    } else {
+      list = result;
+    }
+    return list;
   }
 
 }

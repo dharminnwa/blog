@@ -1,0 +1,68 @@
+.table-container
+    max-width: 100%
+    overflow: auto
+    border-radius: 8px
+    background: #FFF
+    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.12)
+
+.table-container .mat-row:nth-child(even)
+    background: #fff !important
+
+.table-container .mat-row:nth-child(odd)
+    background-color: #F0F5FB !important
+
+.table-container .mat-cell:nth-child(2)
+    text-align: center
+
+.table-container .td-wrapper
+    display: flex
+    align-items: center
+
+.table-container .td-inner-wrapper
+    height: 40px
+    width: 40px
+    border-radius: 50%
+    background: #47a1f6
+    border: 2px solid #47a1f6
+    color: white
+    text-align: center
+    line-height: 40px
+    border: 2px solid #47A1F6
+
+.cus-table-user-wrap
+    :host ::ng-deep .mat-sort-header-container
+        display: flex
+        justify-content: center
+
+    th.mat-header-cell, td.mat-cell
+        text-align: start !important
+        padding: 27px 10px
+    th.mat-header-cell
+        color: #506E85
+
+        font-size: 18px
+
+        font-weight: 700
+
+    td.mat-cell
+        color: #253244
+        text-align: center
+
+        font-size: 16px
+
+        font-weight: 400
+
+    td.mat-cell:nth-child(1)
+        padding-left: 30px
+
+    td.mat-cell:nth-child(2)
+        color: #47A1F6
+        font-weight: 500
+        font-size: 18px
+.pagination-cus-wrap
+    ::ng-deep .mat-paginator-page-size-label,
+    ::ng-deep .mat-paginator-range-label,
+    ::ng-deep .mat-select-value
+        color: #506E85
+        font-size: 16px
+        font-weight: 400

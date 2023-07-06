@@ -1,8 +1,8 @@
 <div class="container-fluid">
     <div class="row header my-2 mx-2">
         <div class="card p-0">
-            <div class="card-body p-10">
-                <div class="d-flex justify-content-between">
+            <div class="card-body p-10 pb-1">
+                <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <div class="d-flex justify-content-start">
                             <div>
@@ -12,28 +12,66 @@
                                 <span class="title">Users</span>
                             </div>
                         </div>
-                        
+
                     </div>
                     <div>
-                        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="isGridView = false">
-                            <mat-icon aria-label="Side nav toggle icon">list</mat-icon>
-                        </button>
-                        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="isGridView = true">
-                            <mat-icon aria-label="Side nav toggle icon">view_module</mat-icon>
-                        </button>
+                        <!-- <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="isGridView">
+                            <mat-button-toggle (click)="isGridView = false">
+                                <mat-icon aria-label="Side nav toggle icon">list</mat-icon>
+                            </mat-button-toggle>
+                            <mat-button-toggle (click)="isGridView = true">
+                                <mat-icon aria-label="Side nav toggle icon">view_module</mat-icon>s
+                            </mat-button-toggle>
+                        </mat-button-toggle-group> -->
+                        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="toggle-group cus-toggle-wrap"
+                            [value]="isGridView">
+                            <mat-button-toggle [value]="false" (change)="isGridView = false" selected>
+                                <mat-icon aria-label="Side nav toggle icon" [color]="!isGridView ? 'icon-color' : ''">list</mat-icon>
+                            </mat-button-toggle>
+                            <mat-button-toggle [value]="true" (change)="isGridView = true">
+                                <mat-icon aria-label="Side nav toggle icon" [color]="isGridView ? 'icon-color' : ''">view_module</mat-icon>
+                            </mat-button-toggle>
+                        </mat-button-toggle-group>
                     </div>
+                    <!-- <div class="d-flex">
+                        <div aria-label="Toggle sidenav" mat-icon-button (click)="isGridView = false">
+                            <mat-icon aria-label="Side nav toggle icon">list</mat-icon>
+                        </div>
+                        <div aria-label="Toggle sidenav" mat-icon-button (click)="isGridView = true">
+                            <mat-icon aria-label="Side nav toggle icon">view_module</mat-icon>
+                        </div>
+                    </div> -->
                 </div>
             </div>
-            
-            <div class="pl-4">
-                <p class="header-text">Total Users : 10</p>
-            </div> 
+
+
+            <!--  -->
+            <div class="container-fluid px-0">
+                <div class="row pl-4 g-0">
+                    <div class="col-6 d-flex align-items-center">
+                        <p class="header-text px-3">Total Users : 10</p>
+                    </div>
+                    <div class="col-6 text-end">
+                        <div
+                            class="my-2 mx-2 d-inline-flex search-box-wrap my-2 mx-2 d-inline-flex justify-content-end position-relative">
+                            <!-- <mat-label>Search: </mat-label> -->
+                            <!-- <mat-form-field> -->
+                            <div class="search-icon-wrap" style="position: absolute; top:3px; left:4px;">
+                                <mat-icon matPrefix>search</mat-icon>
+                            </div>
+                            <input matInput placeholder="Search Entry" style="padding: 3px 5px 3px 31px;" #input (keyup)="applyFilter($event)">
+                            <!-- </mat-form-field> -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
     <app-users-grid-view *ngIf="isGridView"></app-users-grid-view>
     <app-users-list-view *ngIf="!isGridView"></app-users-list-view>
 </div>
-    
+
 
 <!-- <div class="container-fluid">
     <div class="row header my-2 mx-2">
