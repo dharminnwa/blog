@@ -4,7 +4,7 @@ import { SharedService } from '../shared/service/shared.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.sass']
 })
 export class HomeComponent implements OnInit {
 

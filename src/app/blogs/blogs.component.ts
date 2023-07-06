@@ -4,11 +4,13 @@ import { SharedService } from '../shared/service/shared.service';
 @Component({
   selector: 'app-blogs',
   templateUrl: './blogs.component.html',
-  styleUrls: ['./blogs.component.css']
+  styleUrls: ['./blogs.component.sass']
 })
 export class BlogsComponent implements OnInit {
 
   blogPost:any[] = []
+  isExpanded:boolean = false;
+
   constructor(
     private sharedService: SharedService
   ) { }
@@ -24,5 +26,9 @@ export class BlogsComponent implements OnInit {
      }
     })
  }
+
+ toggleAccordion(): void {
+  this.isExpanded = !this.isExpanded;
+}
 
 }
