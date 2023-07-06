@@ -5,6 +5,7 @@ import { UsersGridViewComponent } from './users-grid-view/users-grid-view.compon
 import { UsersListViewComponent } from './users-list-view/users-list-view.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     CommonModule,
     UsersRoutingModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatFormFieldModule
   ],
   exports:[
     UsersGridViewComponent,
