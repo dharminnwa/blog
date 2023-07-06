@@ -28,8 +28,6 @@
                   <h1 class="title">{{ post.title }}</h1>
                 </div>
                 <div>
-                  <!-- <div class="post-body"  > <p>{{ post.body }}</p> </div>
-                  <div class="mt-2 mb-2"><a href="">Read more</a></div> -->
                   <div class="post-body">
                     <p [ngClass]="{'collapse': isExpanded, 'show': !isExpanded}" class="post-content">
                       {{ post.body | slice:0:50 }}
@@ -42,7 +40,7 @@
                     <a class="pointer" data-bs-toggle="collapse" (click)="toggleAccordion()">Read more</a>
                   </div>
                   
-                  <div class="d-flex mt-4 align-bottom">
+                  <div class="d-flex mt-4 align-bottom text-container">
                     <div class="d-flex"><mat-icon>alarm</mat-icon>
                       <p class="pt-1 date-text ml-1">04/07/2023</p>
                     </div>
