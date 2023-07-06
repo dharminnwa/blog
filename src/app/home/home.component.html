@@ -20,7 +20,7 @@
     </div>
     <div class="row g-1">
         <ng-container *ngFor="let data of cardData; let i = index">
-            <div class="col-md-3 px-2">
+            <div class="col-md-3 card-container px-2">
                 <div class="card">
                     <div class="card-body">
                         <div *ngIf="i === 0" class="icon">
@@ -100,27 +100,29 @@
         </div>
         <hr>
         <div class="d-flex flex-wrap w-100">
+            <div class="row g-0">
             <ng-container *ngFor="let post of blogPost; let i = index;">
-                <div class="col-md-3 col-3 my-2 mx-2 w-100" *ngIf="i % 4 === 0">
-                    <div class="d-block">
-                        <div class="row mx-2">
-                            <div class="col-md-3 col-3" *ngFor="let j of [i, i+1, i+2, i+3]; let k = index;">
+                <!-- <div class="col-md-3 col-3 my-2 mx-2 w-100" > -->
+                    <!-- <div class="d-block"> -->
+                        
+                            <div class="col-md-3 col-lg-3 col-sm-6">
                                 <div class="card d-flex flex-column h-100 p-3">
                                     <div class="w-100">
                                         <img class="card-img-top" src="https://picsum.photos/id/1/200/300"
                                             alt="Card image">
                                     </div>
                                     <div class="card-body p-0 flex-grow-1">
-                                        <h4 class="card-title fw-bold fs-4">{{ blogPost[k].title}}
+                                        <h4 class="card-title fw-bold fs-4">{{post.title}}
                                         </h4>
-                                        <p class="card-text">{{ blogPost[k].body }}</p>
+                                        <p class="card-text">{{ post.body }}</p>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
+                       
+                    <!-- </div> -->
+                <!-- </div> -->
             </ng-container>
+        </div>
         </div>
     </div>
 </div>

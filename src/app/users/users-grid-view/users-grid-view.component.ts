@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { SharedService } from 'src/app/shared/service/shared.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { SharedService } from 'src/app/shared/service/shared.service';
   styleUrls: ['./users-grid-view.component.sass']
 })
 export class UsersGridViewComponent implements OnInit {
+  @Output() userCountEmit = new EventEmitter();
   public users: any = [];
   public usersClone: any = [];
 
@@ -32,6 +33,8 @@ export class UsersGridViewComponent implements OnInit {
       next: (users) => {
         this.users = users;
         this.usersClone = users;
+        this.userCountEmit.emit(users.length);
+
       }
     })
   }
