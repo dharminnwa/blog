@@ -4,17 +4,19 @@ import { SharedService } from '../shared/service/shared.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.sass']
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
 
   blogPost: any[] = [];
+  cardData: any[] = [];
   constructor(
     private sharedService: SharedService
   ) { }
 
   ngOnInit(): void {
     this.getBlogPosts();
+    this.getHomeHeaderData();
   }
 
   getBlogPosts() {
@@ -24,5 +26,12 @@ export class HomeComponent implements OnInit {
      }
     })
  }
-
+  
+ getHomeHeaderData(): void {
+  this.sharedService.getHomeHeaderData().subscribe({
+    next:(res) => {
+      this.cardData = res;
+    }
+  })
+ }
 }
