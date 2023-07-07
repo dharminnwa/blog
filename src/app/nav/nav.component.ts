@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { SharedService } from '../shared/service/shared.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -10,7 +10,8 @@ import { SharedService } from '../shared/service/shared.service';
   styleUrls: ['./nav.component.sass']
 })
 export class NavComponent {
-
+ 
+  showLogOut:boolean = false;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -18,7 +19,7 @@ export class NavComponent {
     );
 
   constructor(private breakpointObserver: BreakpointObserver,
-    private sharedService: SharedService
+    private router: Router
     ) {
       
     }
@@ -30,5 +31,13 @@ export class NavComponent {
     const initials = fullName.shift().charAt(0) + fullName.pop().charAt(0);
     return initials.toUpperCase();
   }
+ 
+  toggleLogOut() {
+    this.showLogOut = !this.showLogOut;
+  }
 
+  logOut() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/auth/login']);
+  }
 }
