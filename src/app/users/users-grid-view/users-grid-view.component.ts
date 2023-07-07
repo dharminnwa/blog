@@ -42,7 +42,7 @@ export class UsersGridViewComponent implements OnInit {
   public selectUserNameList(query: string, listClone: any): any[] {
     const result: any[] = [];
     for (const b of listClone) {
-      if (b.name.toLowerCase().includes(query)) {
+      if (b.name.toLowerCase().includes(query) || b.email.toLowerCase().includes(query)) {
         result.push(b)
       }
     }
