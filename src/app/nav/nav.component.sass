@@ -75,25 +75,31 @@
   display: flex
   align-items: center
 
-.active,
-.mat-mdc-nav-list .mat-mdc-list-item:focus
-  border-radius: 5.333px
-  background: $primary-color
-  color: $white-color
+.font-color
+  color: $primary-color
+
+.menu-font-size
   font-size: 14px
   font-weight: 700
 
+.active
+  border-radius: 5.333px
+  height: 35px
+  background: $primary-color
+  color: $white-color
+
+
 ::ng-deep.active
-  .mdc-list-item__primary-text
+  .font-color
     color: $white-color !important
 
 .dropdown-menu
   color: $white-color
   right: 5%
 
-.p-10 
+.p-10
   padding: 10px
-  
+
 .dropdown-item
   text-align: center
   display: inline-flex
