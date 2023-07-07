@@ -9,17 +9,17 @@
         <span class="material-icons">
           home
         </span>
-        <span style="padding: 10px;">Home</span></a>
+        <span class="p-10">Home</span></a>
       <a mat-list-item routerLinkActive="active" [routerLink]="['/users']">
         <span class="material-icons">
           person
         </span>
-        <span style="padding: 10px;">Users</span></a>
+        <span class="p-10">Users</span></a>
       <a mat-list-item routerLinkActive="active" [routerLink]="['/blogs']">
         <span class="material-icons">
           source
         </span>
-        <span style="padding: 10px;">Blogs</span></a>
+        <span class="p-10">Blogs</span></a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -36,7 +36,7 @@
         <mat-icon>notifications</mat-icon>
       </button>
       <div class="dropdown">
-      <button type="button" class="dropdown-toggle" id="dropdownMenuButton" aria-label="Toggle sidenav" mat-icon-button (click)="toggleLogOut()">
+      <button type="button" class="dropdown-toggle" aria-label="Toggle sidenav" mat-icon-button (click)="toggleLogOut()">
         <div class="rows">
           <div class="circles">
             {{ getInitials(username) }}
