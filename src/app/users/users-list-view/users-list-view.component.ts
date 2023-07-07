@@ -40,6 +40,7 @@ export class UsersListViewComponent implements OnInit {
   getUsersList() {
     this._sharedService.getUsersList().subscribe({
       next: (users) => {
+        debugger
         this.userDataList = users;
         this.dataSource = new MatTableDataSource(users);
         this.dataSource.sort = this.sort;
@@ -56,6 +57,9 @@ export class UsersListViewComponent implements OnInit {
   }
 
   applyFilter(value: string) {
+    this.dataSource.filterPredicate = function(data, filter: string): boolean {
+      return data.name.toLowerCase().includes(filter) || data.email.toLowerCase().includes(filter) || data.phone.toString().includes(filter);
+    };
 
     this.dataSource.filter = value.trim().toLowerCase();
     this.dataSource.paginator = this.paginator;
