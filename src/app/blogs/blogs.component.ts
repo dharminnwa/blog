@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../shared/service/shared.service';
+import { IBlogPostApiModel } from '../shared/model/post-api-model';
 
 @Component({
   selector: 'app-blogs',
@@ -8,7 +9,7 @@ import { SharedService } from '../shared/service/shared.service';
 })
 export class BlogsComponent implements OnInit {
 
-  blogPost:any[] = []
+  blogPost:IBlogPostApiModel[] = []
   isExpanded:boolean = false;
 
   constructor(
@@ -23,6 +24,10 @@ export class BlogsComponent implements OnInit {
     this.sharedService.getBlogPosts().subscribe({
      next:(res) => {
        this.blogPost = res;
+       this.blogPost.forEach((post) => { 
+        post.isExpanded = false;
+        post.maxHeight = '35px';
+      })
      }
     })
  }
@@ -31,4 +36,7 @@ export class BlogsComponent implements OnInit {
   this.isExpanded = !this.isExpanded;
 }
 
+togglePost(post: any): void {
+  post.isExpanded = !post.isExpanded;
+}
 }

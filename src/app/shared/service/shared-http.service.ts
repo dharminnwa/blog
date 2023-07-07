@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
+import { IBlogPostApiModel } from '../model/post-api-model';
 
 @Injectable({
   providedIn: 'root'
@@ -33,8 +34,8 @@ export class SharedHttpService {
     private httpClient: HttpClient
   ) { }
 
-  getBlogPostApi(): Observable<any> {
-    return this.httpClient.get(this.url + '/posts');
+  getBlogPostApi(): Observable<IBlogPostApiModel[]> {
+    return this.httpClient.get<IBlogPostApiModel[]>(this.url + '/posts');
   }
 
   getUsersApi(): Observable<any> {
