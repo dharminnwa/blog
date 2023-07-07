@@ -14,7 +14,6 @@ export class UsersComponent implements OnInit {
   constructor(public _sharedService: SharedService) { }
 
   ngOnInit(): void {
-
   }
 
   applyFilter(event: Event) {
@@ -23,7 +22,6 @@ export class UsersComponent implements OnInit {
   }
 
   getUserCount(value) {
-    debugger
     this.userCount = value;
   }
 }
