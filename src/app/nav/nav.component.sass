@@ -10,6 +10,8 @@
 
   & .mat-toolbar
     background: inherit
+    font-size: 18px
+    font-weight: 700
 
 .mat-toolbar.mat-primary
   position: sticky
@@ -45,6 +47,11 @@
   color: white
   text-align: center
   line-height: 40px
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  font-size: 18px
 
   .rows &:not(:first-child)
     margin-left: -18px
@@ -64,25 +71,32 @@
   padding-left: 0 !important
   z-index: 1041
 
+::ng-deep.mdc-list-item__primary-text
+  display: flex
+  align-items: center
+
 .active,
-.mat-list-item:hover,
-.mat-nav-list .mat-list-item:focus
+.mat-mdc-nav-list .mat-mdc-list-item:focus
   border-radius: 5.333px
   background: $primary-color
   color: #FFF
   font-size: 14px
   font-weight: 700
 
+::ng-deep.active
+  .mdc-list-item__primary-text
+    color: #FFF !important
+
 .dropdown-menu
   color: #fff
   right: 5%
 
 .dropdown-item
-    font-family: Proxima Nova
-    text-align: center
+  font-family: Proxima Nova
+  text-align: center
 
 .dropdown:hover>.dropdown-menu
-    display: block
+  display: block
 
 .dropdown>.dropdown-toggle:active
   pointer-events: none
@@ -92,11 +106,11 @@
   right: 5%
 
 .dropdown-item
-    font-family: Proxima Nova
-    text-align: center
+  font-family: Proxima Nova
+  text-align: center
 
 .dropdown:hover>.dropdown-menu
-    display: block
+  display: block
 
 .dropdown>.dropdown-toggle:active
   pointer-events: none

@@ -4,7 +4,7 @@
     <mat-toolbar>
       <div>MENU</div>
     </mat-toolbar>
-    <mat-nav-list>
+    <mat-nav-list class="p-1">
       <a mat-list-item routerLinkActive="active" [routerLink]="['/home']">
         <span class="material-icons">
           home
@@ -12,7 +12,7 @@
         <span style="padding: 10px;">Home</span></a>
       <a mat-list-item routerLinkActive="active" [routerLink]="['/users']">
         <span class="material-icons">
-          person
+          people
         </span>
         <span style="padding: 10px;">Users</span></a>
       <a mat-list-item routerLinkActive="active" [routerLink]="['/blogs']">
@@ -30,26 +30,27 @@
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Blogging</span>
+      <img src="assets/loremipsum-logo.png">
       <div class="spacer"></div>
       <button type="button" aria-label="Toggle sidenav" mat-icon-button>
         <mat-icon>notifications</mat-icon>
       </button>
       <div class="dropdown">
-      <button type="button" class="dropdown-toggle" id="dropdownMenuButton" aria-label="Toggle sidenav" mat-icon-button (click)="toggleLogOut()">
-        <div class="rows">
-          <div class="circles">
-            {{ getInitials(username) }}
+        <button type="button" class="dropdown-toggle" id="dropdownMenuButton" aria-label="Toggle sidenav"
+          mat-icon-button (click)="toggleLogOut()">
+          <div class="rows">
+            <div class="circles">
+              {{ getInitials(username) }}
+            </div>
           </div>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" (click)="logOut()">
+            <span class="material-icons">
+              logout
+            </span><span>Log out</span></a>
         </div>
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" (click)="logOut()">
-           <span class="material-icons">
-          logout
-          </span><span>Log out</span></a>
       </div>
-    </div>
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>
