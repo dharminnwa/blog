@@ -1,3 +1,6 @@
+
+@import "../../styles"
+
 .sidenav-container
   height: 100%
   background: #F0F5FB
@@ -37,8 +40,8 @@
   height: 40px
   width: 40px
   border-radius: 50%
-  background: #47a1f6
-  border: 2px solid #47a1f6
+  background: $primary-color
+  border: 2px solid $primary-color
   color: white
   text-align: center
   line-height: 40px
@@ -60,3 +63,14 @@
 .navbar
   padding-left: 0 !important
   z-index: 1041
+
+.active,
+.mat-list-item:hover
+  border-radius: 5.333px
+  background: $primary-color
+  color: #FFF
+  font-family: Proxima Nova
+  font-size: 14px
+  font-style: normal
+  font-weight: 700
+  line-height: normal
