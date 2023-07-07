@@ -14,7 +14,6 @@ export class UsersComponent implements OnInit {
   constructor(public _sharedService: SharedService) { }
 
   ngOnInit(): void {
-
   }
 
   applyFilter(event: Event) {
