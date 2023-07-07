@@ -8,30 +8,9 @@ import { SharedService } from '../shared/service/shared.service';
 })
 export class HomeComponent implements OnInit {
 
-  // blogPost: any[] = [];
-
-  constructor(
-    private sharedService: SharedService
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
-    // this.getBlogPosts();
-    // this.getHomeHeaderData();
   }
 
-//   getBlogPosts() {
-//     this.sharedService.getBlogPosts().subscribe({
-//      next:(res) => {
-//        this.blogPost = res;
-//      }
-//     })
-//  }
-  
-//  getHomeHeaderData(): void {
-//   this.sharedService.getHomeHeaderData().subscribe({
-//     next:(res) => {
-//       this.cardData = res;
-//     }
-//   })
-//  }
 }

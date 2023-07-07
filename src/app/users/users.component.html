@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row header my-2 mx-2">
-        <div class="card p-0">
+        <div class="card p-0 user-wrapper">
             <div class="card-body p-10 pb-1">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
@@ -17,11 +17,11 @@
                     <div>
                         <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="toggle-group cus-toggle-wrap"
                             [value]="isGridView">
-                            <mat-button-toggle [value]="false" (change)="isGridView = false" selected>
+                            <mat-button-toggle [value]="false" (change)="isGridView = false; searchText=''" selected>
                                 <mat-icon aria-label="Side nav toggle icon"
                                     [color]="!isGridView ? 'icon-color' : ''">list</mat-icon>
                             </mat-button-toggle>
-                            <mat-button-toggle [value]="true" (change)="isGridView = true">
+                            <mat-button-toggle [value]="true" (change)="isGridView = true; searchText=''">
                                 <mat-icon aria-label="Side nav toggle icon"
                                     [color]="isGridView ? 'icon-color' : ''">view_module</mat-icon>
                             </mat-button-toggle>
@@ -41,7 +41,7 @@
                             <div class="search-icon-wrap" class="search-icon">
                                 <mat-icon matPrefix>search</mat-icon>
                             </div>
-                            <input matInput placeholder="Search Entry" class="search-place-holder" #input (keyup)="applyFilter($event)">
+                            <input matInput placeholder="Search Entry" [(ngModel)]="searchText" class="search-place-holder" #input (keyup)="applyFilter($event)">
                         </div>
                     </div>
                 </div>
