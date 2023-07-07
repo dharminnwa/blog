@@ -19,25 +19,20 @@
       <div class="col-lg-6 col-md-12  my-2">
         <div class="card mx-2 border-0">
           <div class="card-body">
-            <div class="d-flex flex-grow-1">
-              <div class="w-50">
+            <div class="d-flex flex-grow-1 post-container">
+              <div class="w-50 child-container">
                 <img class="rounded img-left" src="https://picsum.photos/id/1/200/300" alt="">
               </div>
-              <div class="mx-2 w-50 flex-grow-1">
+              <div class="mx-2 w-50 flex-grow-1 child-container">
                 <div>
                   <h1 class="title">{{ post.title }}</h1>
                 </div>
                 <div>
-                  <div class="post-body">
-                    <p [ngClass]="{'collapse': isExpanded, 'show': !isExpanded}" class="post-content">
-                      {{ post.body | slice:0:50 }}
-                    </p>
-                    <p [ngClass]="{'collapse': !isExpanded, 'show': isExpanded}" class="post-content">
-                      {{ post.body }}
-                    </p>
+                  <div class="post-body" [style.max-height]="post.isExpanded ? 'none' : post.maxHeight">
+                    <p>{{ post.body }}</p>
                   </div>
                   <div class="mt-2 mb-2 ">
-                    <a class="pointer" data-bs-toggle="collapse" (click)="toggleAccordion()">Read more</a>
+                    <a class="pointer" data-bs-toggle="collapse" (click)="togglePost(post)">{{ post.isExpanded ? 'Read less' : 'Read more' }}</a>
                   </div>
                   
                   <div class="d-flex mt-4 align-bottom text-container">

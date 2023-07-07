@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SharedHttpService } from './shared-http.service';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { IBlogPostApiModel } from '../model/post-api-model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class SharedService {
     this.searchText.next(searchValue);
   }
 
-  getBlogPosts(): Observable<any> {
+  getBlogPosts(): Observable<IBlogPostApiModel[]> {
     return this.sharedHttpService.getBlogPostApi();
   }
 
