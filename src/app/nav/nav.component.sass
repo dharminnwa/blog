@@ -26,7 +26,7 @@
   height: 60px
   display: flex
   align-items: center
-  background-color: $background-color
+  background-color: #f1f3f4
   color: $font-color
   font-weight: 600
 
@@ -79,19 +79,21 @@
 .mat-mdc-nav-list .mat-mdc-list-item:focus
   border-radius: 5.333px
   background: $primary-color
-  color: $card-border-color
+  color: $white-color
   font-size: 14px
   font-weight: 700
 
 ::ng-deep.active
   .mdc-list-item__primary-text
-    color: #FFF !important
+    color: $white-color !important
 
 .dropdown-menu
+  color: $white-color
   right: 5%
 
 .p-10 
   padding: 10px
+  
 .dropdown-item
   text-align: center
   display: inline-flex
@@ -104,3 +106,5 @@
 .dropdown>.dropdown-toggle:active
   pointer-events: none
 
+.pointer-cursor
+  cursor: pointer

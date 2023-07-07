@@ -75,11 +75,11 @@ export class AuthComponent implements OnInit {
       if (!!user && this.loginForm.value.password === '123456') {
         localStorage.setItem('token', this.loginForm.value.email);
         localStorage.setItem('userName', user.name);
-        this.toastService.success('Login Successfully', 'Success');
+        this.toastService.success('Login Successfully!', 'Success');
         this._sharedService.isUserLoggedIn.next(true);
         this.router.navigate(['/']);
       } else {
-        this.toastService.warning('Email or Password is wrong!!!', 'Login Failed!!!')
+        this.toastService.warning('Email or Password is wrong!', 'Login Failed!')
       }
     }
   }
