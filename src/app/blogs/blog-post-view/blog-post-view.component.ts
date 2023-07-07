@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { IBlogPostApiModel } from 'src/app/shared/model/post-api-model';
 import { SharedService } from 'src/app/shared/service/shared.service';
 
@@ -8,8 +8,7 @@ import { SharedService } from 'src/app/shared/service/shared.service';
   styleUrls: ['./blog-post-view.component.sass']
 })
 export class BlogPostViewComponent implements OnInit {
-
-  blogPost:IBlogPostApiModel[] = []
+  @Input('blogPost')blogPost:IBlogPostApiModel[] = []
   isExpanded:boolean = false;
 
   constructor(
