@@ -40,7 +40,6 @@ export class UsersListViewComponent implements OnInit {
   getUsersList() {
     this._sharedService.getUsersList().subscribe({
       next: (users) => {
-        debugger
         this.userDataList = users;
         this.dataSource = new MatTableDataSource(users);
         this.dataSource.sort = this.sort;
