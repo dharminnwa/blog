@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedService } from '../shared/service/shared.service';
 import { IBlogPostApiModel } from '../shared/model/post-api-model';
+import { SharedService } from '../shared/service/shared.service';
 
 @Component({
   selector: 'app-blogs',
@@ -10,10 +10,8 @@ import { IBlogPostApiModel } from '../shared/model/post-api-model';
 export class BlogsComponent implements OnInit {
 
   blogPost:IBlogPostApiModel[] = []
-  isExpanded:boolean = false;
-
   constructor(
-    private sharedService: SharedService
+   private sharedService: SharedService
   ) { }
 
   ngOnInit(): void {
@@ -32,11 +30,4 @@ export class BlogsComponent implements OnInit {
     })
  }
 
- toggleAccordion(): void {
-  this.isExpanded = !this.isExpanded;
-}
-
-togglePost(post: any): void {
-  post.isExpanded = !post.isExpanded;
-}
 }

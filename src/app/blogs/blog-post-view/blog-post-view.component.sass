@@ -1,0 +1,115 @@
+@import "../../../styles"
+
+.card
+    border: 0
+    background-color: #FFFFFF
+    border-radius: 8px
+
+.img-left
+    width: 90%
+    height: 280px
+    object-fit: cover
+
+.post-body
+    color: #506E85
+    font-family: Proxima Nova
+    font-size: 16px
+    font-weight: 400
+    line-height: 19px
+    letter-spacing: 0em
+    min-height: 0%
+    overflow: hidden
+
+a
+    color: $primary-color !important
+
+.align-bottom
+    bottom: 0.5rem
+    vertical-align: bottom !important
+
+.date-text
+    font-family: Proxima Nova
+    font-size: 16px
+    font-weight: 400
+    line-height: 19px
+    letter-spacing: 0em
+    text-align: left
+
+.ml-1
+    margin-left: 0.25rem !important
+
+.ml-2
+    margin-left: 0.5rem !important
+
+.title
+    font-family: Proxima Nova
+    font-size: 35px
+    font-weight: 700
+    line-height: 43px
+    letter-spacing: 0em
+    text-align: left
+    color: #000000
+    overflow: hidden
+    max-height: 90px
+
+.header-text
+    font-family: Proxima Nova
+    font-size: 12px
+    font-weight: 400
+    line-height: 15px
+    letter-spacing: 0em
+    text-align: left
+
+.h3
+    color: #506E85
+    font-family: Proxima Nova
+    font-size: 16px
+    font-weight: 700
+    line-height: 19px
+    letter-spacing: 0em
+    text-align: left
+
+.blog
+    padding-top: 1rem
+    padding-left: 1rem
+
+.pl-4
+    padding-left: 1rem
+
+hr
+    margin-top: 0
+    opacity: .1 !important
+
+.post-content
+    height: 0
+    overflow: hidden
+    transition: height 1s ease
+
+.show
+    height: auto
+
+.pointer
+    cursor: pointer !important
+
+@media only screen and (min-width: 280px) and (max-width: 1227px)
+    .text-container
+        display: block !important
+    .ml-2
+        margin-left: 0 !important
+
+@media only screen and (max-width:475px)
+    .post-container
+        display: block !important
+    .child-container
+        margin-top: 1rem !important
+        width: 100% !important
+    .img-left
+        width: 50%
+        height: 160px
+    .title
+        font-size: 25px
+        line-height: 30px
+
+@media only screen and (min-width: 475px) and (max-width: 1227px)
+    .img-left
+        height: 250px !important
