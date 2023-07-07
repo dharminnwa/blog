@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UntypedFormBuilder,UntypedFormControl,UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder,FormControl,FormGroup, Validators } from '@angular/forms';
 import { SharedService } from '../shared/service/shared.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -11,22 +11,22 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AuthComponent implements OnInit {
   
-  loginForm: UntypedFormGroup;
+  loginForm: FormGroup;
   showPassword:boolean = false;
   loading:boolean = false;
   users: any[] = [];
 
-  get email(): UntypedFormControl {
-    return this.loginForm.get('email') as UntypedFormControl;
+  get email(): FormControl {
+    return this.loginForm.get('email') as FormControl;
   }
 
-  get password(): UntypedFormControl {
-    return this.loginForm.get('password') as UntypedFormControl;
+  get password(): FormControl {
+    return this.loginForm.get('password') as FormControl;
   }
 
   constructor(
     private router: Router,
-    private fb: UntypedFormBuilder,
+    private fb: FormBuilder,
     private _sharedService: SharedService,
     private toastService: ToastrService
   ) { }
