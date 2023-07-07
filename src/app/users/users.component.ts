@@ -23,7 +23,7 @@ export class UsersComponent implements OnInit {
   }
 
   getUserCount(value) {
-    debugger
     this.userCount = value;
   }
+  
 }

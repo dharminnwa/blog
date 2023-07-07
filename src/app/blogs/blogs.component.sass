@@ -1,3 +1,5 @@
+@import "../../styles"
+
 .container-fluid
     font-family: 'Proxima Nova', sans-serif
 
@@ -22,7 +24,7 @@
     overflow: hidden
 
 a
-    color: #47A1F6 !important
+    color: $primary-color !important
 
 .align-bottom
     bottom: 0.5rem
@@ -89,12 +91,11 @@ hr
 .show
     height: auto
 
-.pointer 
-    cursor:  pointer !important
+.pointer
+    cursor: pointer !important
 
 @media only screen and (min-width: 280px) and (max-width: 1227px)
     .text-container
-      display: block !important
+        display: block !important
     .ml-2
         margin-left: 0 !important
-
