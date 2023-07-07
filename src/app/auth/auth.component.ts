@@ -51,35 +51,36 @@ export class AuthComponent implements OnInit {
     this._sharedService.getUsersList().subscribe({
       next:(users) => {
         users.forEach((user) => {
-          this.users.push(user.email);
+          this.users.push(user);
           
         })
       }
     })
   }
 
-  checkAuth(email:string): boolean {
+  checkAuth(email:string): any {
     let i = 0
     for( i = 0; i< this.users.length ; i++ ){
-      if(email == this.users[i]){
-        return true;
+      if(email == this.users[i].email){
+        return this.users[i];
       }
     }
-    return false;
+    return null;
   }
 
   login(): void {
+    if (this.loginForm.valid) {
+      var user = this.checkAuth(this.loginForm.value.email)
 
-    if(this.loginForm.valid){
-
-    if(this.checkAuth(this.loginForm.value.email) && this.loginForm.value.password === '123456') {
-       localStorage.setItem('token',this.loginForm.value.email);
-       this.toastService.success('Login Successfully', 'Success');
-       this._sharedService.isUserLoggedIn.next(true);
-       this.router.navigate(['/']);
-    }else {
-       this.toastService.warning('Email or Password is wrong!!!','Login Failed!!!')
-    }
+      if (!!user && this.loginForm.value.password === '123456') {
+        localStorage.setItem('token', this.loginForm.value.email);
+        localStorage.setItem('userName', user.name);
+        this.toastService.success('Login Successfully', 'Success');
+        this._sharedService.isUserLoggedIn.next(true);
+        this.router.navigate(['/']);
+      } else {
+        this.toastService.warning('Email or Password is wrong!!!', 'Login Failed!!!')
+      }
     }
   }
 

@@ -7,8 +7,10 @@ import { SharedService } from './shared/service/shared.service';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent implements OnInit {
-  title = 'blogging-app';
+  title = 'Blogs';
   isUserLoggedIn: boolean = false;
+  blogPost:any;
+  username:string;
 
   constructor(private sharedService: SharedService){
     this.sharedService.userLoggedIn();
@@ -19,6 +21,15 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  
+    this.getBlogPosts();
+    this.username = localStorage.getItem('userName');
+  }
+
+  getBlogPosts() {
+    this.sharedService.getBlogPosts().subscribe({
+     next:(res) => {
+       this.blogPost = res?.map(x=>x.title)?.slice(0, 10);;
+     }
+    });
   }
 }

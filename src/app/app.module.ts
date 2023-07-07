@@ -13,6 +13,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {  HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatExpansionModule,
     MatListModule,
     HttpClientModule,
+    MatMenuModule,
     ToastrModule.forRoot()
   ],
   providers: [
