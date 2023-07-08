@@ -24,5 +24,10 @@ export class UsersComponent implements OnInit {
   getUserCount(value) {
     this.userCount = value;
   }
+
+  clearSearchbox() {
+    this.searchText = '';
+    this._sharedService.setSearchTextValue("");
+  }
   
 }
