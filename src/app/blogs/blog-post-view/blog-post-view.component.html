@@ -12,7 +12,7 @@
                 <h1 class="title">{{ post.title }}</h1>
               </div>
               <div class="inn-blog-section-wrap">
-                <div class="post-body" [ngClass]="isExpanded ? 'max-height-wrap': ' '">
+                <div class="post-body fix-height" [ngClass]="isExpanded ? 'max-height-wrap': ' '">
                   <p>
                     {{ blogPost[i].body.length < 200 ? blogPost[i].body : isExpanded ? blogPost[i].body :
                       blogPost[i].body | slice: 0:200 }} </p>
