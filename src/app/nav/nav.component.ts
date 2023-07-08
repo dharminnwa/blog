@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav.component.sass']
 })
 export class NavComponent {
-  @Input() blogPost:[];
-  @Input() username;
+  @Input() blogPost:string[];
+  @Input() username:string;
   showLogOut:boolean = false;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -24,7 +24,7 @@ export class NavComponent {
       
   }
 
-  getInitials(nameString) {
+  getInitials(nameString:string) {
     const fullName = nameString.split(' ');
     const initials = fullName.shift().charAt(0) + fullName.pop().charAt(0);
     return initials.toUpperCase();

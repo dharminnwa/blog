@@ -9,7 +9,7 @@ import { SharedService } from './shared/service/shared.service';
 export class AppComponent implements OnInit {
   title = 'Blogs';
   isUserLoggedIn: boolean = false;
-  blogPost:any;
+  blogPost:string[];
   username:string;
 
   constructor(private sharedService: SharedService){
@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
   getBlogPosts() {
     this.sharedService.getBlogPosts().subscribe({
      next:(res) => {
-       this.blogPost = res?.map(x=>x.title)?.slice(0, 10);;
+       this.blogPost = res?.map(x=>x.title)?.slice(0, 10);
      }
     });
   }

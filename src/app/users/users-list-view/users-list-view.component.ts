@@ -20,17 +20,21 @@ export class UsersListViewComponent implements OnInit {
   displayedColumns: string[] = ['avatar', 'name', 'email', 'phone'];
 
   constructor(private _sharedService: SharedService) {
-    this._sharedService.searchText.subscribe((value) => {
-      if (value) {
-        this.applyFilter(value)
-      }
-      else {
-        if (this.userDataList && this.userDataList.length > 0) {
-          this.dataSource = new MatTableDataSource(this.userDataList);
-          this.dataSource.paginator = this.paginator;
+    this._sharedService.searchText.subscribe(
+      {
+        next: (value) => {
+          if (value) {
+            this.applyFilter(value)
+          }
+          else {
+            if (this.userDataList && this.userDataList.length > 0) {
+              this.dataSource = new MatTableDataSource(this.userDataList);
+              this.dataSource.paginator = this.paginator;
+            }
+          }
         }
       }
-    })
+    )
   }
 
   ngOnInit(): void {
@@ -49,14 +53,14 @@ export class UsersListViewComponent implements OnInit {
     })
   }
 
-  getInitials(nameString) {
+  getInitials(nameString: string) {
     const fullName = nameString.split(' ');
     const initials = fullName.shift().charAt(0) + fullName.pop().charAt(0);
     return initials.toUpperCase();
   }
 
   applyFilter(value: string) {
-    this.dataSource.filterPredicate = function(data, filter: string): boolean {
+    this.dataSource.filterPredicate = function (data, filter: string): boolean {
       return data.name.toLowerCase().includes(filter) || data.email.toLowerCase().includes(filter) || data.phone.toString().includes(filter);
     };
 

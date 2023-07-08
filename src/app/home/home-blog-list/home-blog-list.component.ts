@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IBlogPostApiModel } from 'src/app/shared/model/post-api-model';
 import { SharedService } from 'src/app/shared/service/shared.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { SharedService } from 'src/app/shared/service/shared.service';
 })
 export class HomeBlogListComponent implements OnInit {
  
-  blogPost: any[] = [];
+  blogPost: IBlogPostApiModel[] = [];
 
   constructor(
     private sharedService: SharedService
