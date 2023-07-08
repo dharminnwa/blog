@@ -17,11 +17,11 @@
                     <div>
                         <mat-button-toggle-group name="fontStyle" aria-label="Font Style"
                             class="toggle-group cus-toggle-wrap" [value]="isGridView">
-                            <mat-button-toggle [value]="false" (change)="isGridView = false; searchText=''" selected>
+                            <mat-button-toggle [value]="false" (change)="isGridView = false; clearSearchbox()" selected>
                                 <mat-icon aria-label="Side nav toggle icon"
                                     [color]="!isGridView ? 'icon-color' : ''">list</mat-icon>
                             </mat-button-toggle>
-                            <mat-button-toggle [value]="true" (change)="isGridView = true; searchText=''">
+                            <mat-button-toggle [value]="true" (change)="isGridView = true; clearSearchbox()">
                                 <mat-icon aria-label="Side nav toggle icon"
                                     [color]="isGridView ? 'icon-color' : ''">view_module</mat-icon>
                             </mat-button-toggle>
