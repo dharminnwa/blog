@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IHomeSummaryApiModel } from 'src/app/shared/model/home-summary-api-model';
 import { SharedService } from 'src/app/shared/service/shared.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { SharedService } from 'src/app/shared/service/shared.service';
 })
 export class HomeSummaryComponent implements OnInit {
  
-  cardData: any[] = [];
+  cardData: IHomeSummaryApiModel[] = [];
 
   constructor(
     private sharedService: SharedService

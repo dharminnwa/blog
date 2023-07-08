@@ -25,10 +25,6 @@ export class BlogsComponent implements OnInit {
     this.subscription = this.sharedService.getBlogPosts().subscribe({
      next:(res) => {
        this.blogPost = res;
-       this.blogPost.forEach((post) => { 
-        post.isExpanded = false;
-        post.maxHeight = '35px';
-      })
      }
     })
   }

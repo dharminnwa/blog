@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnInit {
   title = 'Blogs';
   isUserLoggedIn: boolean = false;
-  blogPost:any;
+  blogPost:string[];
   username:string;
   loginSubscription: Subscription;
   getBlogsSubscription: Subscription;
@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
   getBlogPosts() {
     this.getBlogsSubscription = this.sharedService.getBlogPosts().subscribe({
      next:(res) => {
-       this.blogPost = res?.map(x=>x.title)?.slice(0, 10);;
+       this.blogPost = res?.map(x=>x.title)?.slice(0, 10);
      }
     });
   }

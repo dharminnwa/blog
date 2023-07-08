@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { SharedHttpService } from './shared-http.service';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { IBlogPostApiModel } from '../model/post-api-model';
+import { IHomeSummaryApiModel } from '../model/home-summary-api-model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class SharedService {
     return this.sharedHttpService.getUsersApi();
   }
 
-  getHomeHeaderData(): Observable<any[]> {
+  getHomeHeaderData(): Observable<IHomeSummaryApiModel[]> {
     return this.sharedHttpService.getHomeHeaderDataApi();
   }
 

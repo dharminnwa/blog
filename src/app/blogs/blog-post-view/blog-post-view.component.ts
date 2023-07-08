@@ -9,7 +9,7 @@ import { SharedService } from 'src/app/shared/service/shared.service';
   styleUrls: ['./blog-post-view.component.sass']
 })
 export class BlogPostViewComponent implements OnInit {
-  blogPost: any;
+  blogPost: IBlogPostApiModel[] = []
   isExpanded: boolean = false;
   subscription: Subscription;
   
@@ -33,21 +33,15 @@ export class BlogPostViewComponent implements OnInit {
         this.blogPost[9].body = 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut';
         this.blogPost.forEach((post) => {
           post.isExpanded = false;
-          post.maxHeight = '110px';
         })
       }
     })
     
   }
 
-  toggleAccordion(): void {
-    this.isExpanded = !this.isExpanded;
-  }
-
-  togglePost(post: any): void {
+  togglePost(post: IBlogPostApiModel): void {
     post.isExpanded = !post.isExpanded;
     this.isExpanded = !this.isExpanded;
-    console.log(post.isExpanded)
   }
 
 }

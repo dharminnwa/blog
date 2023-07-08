@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, from } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { IBlogPostApiModel } from '../model/post-api-model';
+import { IHomeSummaryApiModel } from '../model/home-summary-api-model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class SharedHttpService {
 
   url = 'https://jsonplaceholder.typicode.com';
 
-  homecardData: any[] = [
+  homecardData: IHomeSummaryApiModel[] = 
     [{
       "total": 365,
       "description": "Total Orderes"
@@ -27,7 +28,6 @@ export class SharedHttpService {
       "total": 365,
       "description": "New Users"
     },
-    ]
   ]
 
   constructor(
@@ -42,7 +42,7 @@ export class SharedHttpService {
     return this.httpClient.get(this.url + '/users');
   }
 
-  getHomeHeaderDataApi(): Observable<any[]> {
-    return from(this.homecardData);
+  getHomeHeaderDataApi(): Observable<IHomeSummaryApiModel[]> {
+    return of(this.homecardData);
   }
 }
