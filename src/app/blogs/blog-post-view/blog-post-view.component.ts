@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { IBlogPostApiModel } from 'src/app/shared/model/post-api-model';
 import { SharedService } from 'src/app/shared/service/shared.service';
 
@@ -8,25 +9,28 @@ import { SharedService } from 'src/app/shared/service/shared.service';
   styleUrls: ['./blog-post-view.component.sass']
 })
 export class BlogPostViewComponent implements OnInit {
-  @Input('blogPost') blogPost: IBlogPostApiModel[] = []
+  blogPost: any;
   isExpanded: boolean = false;
-
-  constructor(
-    private sharedService: SharedService
-  ) { }
+  subscription: Subscription;
+  
+  constructor(private sharedService: SharedService) { }
 
   ngOnInit(): void {
     this.getBlogPosts();
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
   getBlogPosts() {
-    this.sharedService.getBlogPosts().subscribe({
+    this.subscription = this.sharedService.getBlogPosts().subscribe({
       next: (res) => {
         this.blogPost = res;
         this.blogPost[0].body = 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut';
         this.blogPost[1].body = 'quia et suscipit\nsuscipit recusandae consequuntur';
-    this.blogPost[5].body = 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut';
-    this.blogPost[9].body = 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut';
+        this.blogPost[5].body = 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut';
+        this.blogPost[9].body = 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut';
         this.blogPost.forEach((post) => {
           post.isExpanded = false;
           post.maxHeight = '110px';

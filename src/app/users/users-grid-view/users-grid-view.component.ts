@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { SharedService } from 'src/app/shared/service/shared.service';
 
 @Component({
@@ -10,7 +11,8 @@ export class UsersGridViewComponent implements OnInit {
   @Output() userCountEmit = new EventEmitter();
   public users: any = [];
   public usersClone: any = [];
-
+  subscription: Subscription;
+  
   constructor(private _sharedService: SharedService) {
     this._sharedService.searchText.subscribe((value) => {
       if (value) {
@@ -28,8 +30,13 @@ export class UsersGridViewComponent implements OnInit {
     this.getUsersList();
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+
   getUsersList() {
-    this._sharedService.getUsersList().subscribe({
+    this.subscription = this._sharedService.getUsersList().subscribe({
       next: (users) => {
         this.users = users;
         this.usersClone = users;
