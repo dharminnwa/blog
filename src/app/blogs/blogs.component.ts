@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IBlogPostApiModel } from '../shared/model/post-api-model';
 import { SharedService } from '../shared/service/shared.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-blogs',
@@ -8,22 +9,24 @@ import { SharedService } from '../shared/service/shared.service';
   styleUrls: ['./blogs.component.sass']
 })
 export class BlogsComponent implements OnInit {
-
   blogPost:IBlogPostApiModel[] = []
-  constructor(
-   private sharedService: SharedService
-  ) { }
+  subscription: Subscription;
+  constructor(private sharedService: SharedService) { }
 
   ngOnInit(): void {
     this.getBlogPosts();
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
   getBlogPosts() {
-    this.sharedService.getBlogPosts().subscribe({
+    this.subscription = this.sharedService.getBlogPosts().subscribe({
      next:(res) => {
        this.blogPost = res;
      }
     })
- }
+  }
 
 }

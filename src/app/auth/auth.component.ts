@@ -10,7 +10,6 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./auth.component.sass']
 })
 export class AuthComponent implements OnInit {
-  
   loginForm: FormGroup;
   showPassword:boolean = false;
   loading:boolean = false;
@@ -24,11 +23,10 @@ export class AuthComponent implements OnInit {
     return this.loginForm.get('password') as FormControl;
   }
 
-  constructor(
-    private router: Router,
-    private fb: FormBuilder,
-    private _sharedService: SharedService,
-    private toastService: ToastrService
+  constructor(private router: Router,
+              private fb: FormBuilder,
+              private _sharedService: SharedService,
+              private toastService: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -79,7 +77,7 @@ export class AuthComponent implements OnInit {
         this._sharedService.isUserLoggedIn.next(true);
         this.router.navigate(['/']);
       } else {
-        this.toastService.warning('Email or Password is wrong!', 'Login Failed!')
+        this.toastService.error('Email or Password is wrong!', 'Login Failed')
       }
     }
   }

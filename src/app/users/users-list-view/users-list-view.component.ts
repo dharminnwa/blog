@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/cor
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Subscription } from 'rxjs';
 import { SharedService } from 'src/app/shared/service/shared.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class UsersListViewComponent implements OnInit {
 
   dataSource: any;
   userDataList: any[] = [];
-
+  subscription: Subscription;
   displayedColumns: string[] = ['avatar', 'name', 'email', 'phone'];
 
   constructor(private _sharedService: SharedService) {
@@ -41,8 +42,13 @@ export class UsersListViewComponent implements OnInit {
     this.getUsersList();
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+
   getUsersList() {
-    this._sharedService.getUsersList().subscribe({
+    this.subscription = this._sharedService.getUsersList().subscribe({
       next: (users) => {
         this.userDataList = users;
         this.dataSource = new MatTableDataSource(users);
